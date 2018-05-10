@@ -46,7 +46,11 @@ dictionary.set('002', 'jlisi i');
 dictionary.set('003', '王五');
 console.log(dictionary.has('003'));
 // console.log(dictionary.size());
-console.log(dictionary.keys());
-console.log(dictionary.values());
-console.log(dictionary.getItems());
-console.log(dictionary.get('001'));
+// console.log(dictionary.keys());
+// console.log(dictionary.values());
+// console.log(dictionary.getItems());
+// console.log(dictionary.get('001'));
+
+module.exports={
+  Dictionary
+}
