@@ -41,6 +41,19 @@ function ArrayList() {
     }
     
   }
+  
+  this.insertionSort = function () {
+    var length = array.length, j, temp;
+    for (let i = 1; i < length; i++) {   //i=1
+      j = i;
+      temp = array[i];
+      while (j > 0 && array[i] > temp) {
+        array[j] = array[j - 1];
+        j--;
+      }
+      array[j] = temp;
+    }
+  }
 }
 
 
