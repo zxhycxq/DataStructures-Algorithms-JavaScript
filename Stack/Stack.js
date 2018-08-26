@@ -1,4 +1,4 @@
-/*后进先出*/
+/*只能在某一端添加或删除数据-后进先出-可以把栈看成是数组的一个子集-桌子上的书*/
 function Stack() {
   let items = []
   
@@ -73,17 +73,17 @@ class Stack2 {
 */
 
 let Stack3 = (
-    function () {
-      const items = new WeakMap ()
-      
-      class stack {
-        constructor() {
-          items.set (this, [])
-        }
-        
-        //
+  function () {
+    const items = new WeakMap ()
+    
+    class stack {
+      constructor() {
+        items.set (this, [])
       }
+      
+      //
     }
+  }
 ) ()
 
 
@@ -91,9 +91,9 @@ let Stack3 = (
 
 function baseConverter(num, base) {
   var remStack = new Stack (),
-      rem,
-      baseString = '',
-      digits = '0123456789ABCDEF';
+    rem,
+    baseString = '',
+    digits = '0123456789ABCDEF';
   
   while (num > 0) {
     rem = Math.floor (num % base);
@@ -111,3 +111,36 @@ function baseConverter(num, base) {
 console.log (baseConverter (14, 16));
 console.log (baseConverter (3, 2));
 console.log (baseConverter (3, 10));
+
+
+//------------
+
+var isValid = function (s) {
+  let stack = []
+  let mapList = {
+    '(': -1,
+    ')': 1,
+    '[': -2,
+    ']': 2,
+    '{': -3,
+    '}': 3,
+  }
+  
+  for (let i=0; i < s.length; i++) {
+    console.log(`%c--i-- `, 'color:blue;font-weight:bold', i)
+    if (mapList[s[i]] < 0) {
+      stack.push (s[i])
+      console.log(`%c--stack-- `, 'color:blue;font-weight:bold', stack)
+    } else {
+      let last = stack.pop ()
+      console.log(`%c--mapList[last]-- `, 'color:blue;font-weight:bold', mapList[last])
+      console.log(`%c--mapList[s[i]]-- `, 'color:blue;font-weight:bold', mapList[s[i]])
+      if (mapList[last] + mapList[s[i]] != 0) {
+        return false
+      }
+    }
+  }
+  if(stack.length>0) return false
+  return true
+}
+//()[]{}   "([)]"     -1 -2 1 2

@@ -1,4 +1,4 @@
-// 先进先出
+// 先进先出-在某一端添加数据，在另一端删除数据-排队吃饭
 function Queue() {
   let items = []
   this.enqueue = function (ele) {
