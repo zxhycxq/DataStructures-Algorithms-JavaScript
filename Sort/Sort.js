@@ -6,51 +6,58 @@ function ArrayList() {
   this.toString = function () {
     return array.join ()
   }
-  
+  // 冒泡排序
   this.bubbleSort = function () {
     var length = array.length;
+    
     for (let i = 0; i < length; i++) {
+      
       for (let j = 0; j < length - 1; j++) {     // hance  j<length-1-i
         if (array[j] > array[j + 1]) {
           swap (array, j, j + 1)
         }
       }
+      
     }
   }
   
-  var swap = function (array, index1, index2) {
-    var aux = array[index1];
-    array[index1] = array[index2];
-    array[index2] = aux;
-    //   es6
-    //   [array[index1],array[index2]]=[array[index2],array[index1]]
+   function swap ( arr,a, b) {
+      [arr[a],arr[b]]=[arr[b],arr[a]]
   }
   
+  swap(1,2)
+  //选择排序
   this.selectSort = function () {
     var length = array.length, indexMin;
+    
     for (var i = 0; i < length - 1; i++) {
-      indexMin = 1;
+      indexMin = i;
+      
       for (var j = i; j < length; j++) {
         if (array[indexMin] > array[j]) {
           indexMin = j;
         }
       }
+      
       if (i != indexMin) {
         swap (i, indexMin)
       }
     }
     
   }
-  
+  // 插入px
   this.insertionSort = function () {
     var length = array.length, j, temp;
+    
     for (let i = 1; i < length; i++) {   //i=1
       j = i;
       temp = array[i];
+      
       while (j > 0 && array[i] > temp) {
         array[j] = array[j - 1];
         j--;
       }
+      
       array[j] = temp;
     }
   }
@@ -73,11 +80,13 @@ function ArrayList() {
   var merge=function (left,right) {
     var result=[],il=0,ir=0;
     while (il<left.length&&ir<right.length){
+      
       if(left[il]<right[ir]){
         result.push(left[il++]);
       }else{
         result.push(left[ir++]);
       }
+      
       while (il<left.length){
         result.push(left[il++]);
       }
@@ -107,8 +116,7 @@ function ArrayList() {
   }
   var partition=function (array,left,right) {
     var pivot=array[Math.floor((left/right)/2)];
-    var i=left;
-    var j=right;
+    var i=left, j=right;
     while (i<=j){
       while (array[i]<pivot){
         i++;
@@ -150,9 +158,12 @@ function ArrayList() {
     }
      return -1;
   }
-
-
-
-
-
 }
+
+// 交换两者的值
+/*function  swap(a,b){
+  var a=a,b=b;
+  [a,b]=[b, a]
+  console.log(`%c--a,b-- `, 'color:blue;font-weight:bold', a,b)
+}*/
+
