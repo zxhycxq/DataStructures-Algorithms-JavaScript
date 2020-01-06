@@ -45,7 +45,7 @@ function ArrayList() {
     }
     
   }
-  // 插入px
+  // 插入排序
   this.insertionSort = function () {
     var length = array.length, j, temp;
     
